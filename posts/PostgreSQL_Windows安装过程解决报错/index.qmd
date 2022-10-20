@@ -1,0 +1,15 @@
+---
+title: "PostgreSQL-Windows安装过程&解决报错"
+author: "Jack Chen"
+date: "2022-07-29"
+categories: [数据库]
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1KU4y1v7b5&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

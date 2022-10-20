@@ -1,0 +1,17 @@
+---
+title: "免费金融数据平台——TUSHARE"
+author: "Jack Chen"
+date: "2022-09-25"
+categories: 
+- 数据集
+- Python
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1cV4y1T7Ew&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

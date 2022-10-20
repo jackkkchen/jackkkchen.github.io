@@ -1,0 +1,15 @@
+---
+title: "pyEcharts-旭日图&树状图"
+author: "Jack Chen"
+date: "2022-05-06"
+categories: [pyEcharts]
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1Wr4y1876u&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

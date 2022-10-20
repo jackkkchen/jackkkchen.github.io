@@ -1,0 +1,15 @@
+---
+title: "【Tableau】高校数据交互大屏_完整可视化流程"
+author: "Jack Chen"
+date: "2022-07-16"
+categories: [BI可视化]
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1Ua411Q7JR&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

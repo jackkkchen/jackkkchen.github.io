@@ -1,0 +1,15 @@
+---
+title: "万万没想到之我一个文科生成为了技术流up主"
+author: "Jack Chen"
+date: "2022-05-31"
+categories: [个人介绍]
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1694y1S7XP&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

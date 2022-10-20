@@ -1,0 +1,18 @@
+---
+title: "SQL 分组查询 & Python 可视化"
+author: "Jack Chen"
+date: "2022-10-03"
+categories: 
+- SQL
+- 数据库
+- Python
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV16W4y1e7i3&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

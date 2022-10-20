@@ -1,0 +1,18 @@
+---
+title: "pyEcharts-着色地图"
+author: "Jack Chen"
+date: "2022-05-17"
+categories: [pyEcharts]
+image: "01.jpeg"
+---
+
+<!-- [【数据可视化】pyEcharts-着色地图](https://www.bilibili.com/video/BV1PY411F7XP?share_source=copy_web&vd_source=dd11a0f1ff6dd0b648c0ad272267792e) -->
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=256686073&bvid=BV1PY411F7XP&cid=722570005&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
+

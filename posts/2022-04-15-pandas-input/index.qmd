@@ -1,0 +1,17 @@
+---
+title: "Pandas 数据导入/导出"
+author: "Jack Chen"
+date: "2022-04-15"
+categories: 
+- python
+- pandas
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1Ga411v79G&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

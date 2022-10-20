@@ -1,0 +1,15 @@
+---
+title: "快速了解Docker容器技术，成为云计算的‘弄潮儿’！"
+author: "Jack Chen"
+date: "2022-08-07"
+categories: [Docker]
+image: "01.jpeg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1FF411w7aD&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 

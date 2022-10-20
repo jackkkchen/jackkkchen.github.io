@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "陈俊杰",
+    "section": "",
+    "text": "I am Jack Chen, a freshman who contacted a year of programming, and also a video creator.（Believe me, the two are somehow related） \nNow I working in the team of a Harvard postdoc. I have been exposed to many technology stacks, including R, Python, SQL, and container technologies for docker, Tableau and PowerBI for business intelligence visualization and so on. I’ve also been working to promote these tool technologies to more people, and I believe that the process of sharing makes me more proficient with these technologies. That’s why I became a bilibili video creator.\nThanks to this identity, I started to accumulate my own fans, so I organized a community, which allowed me to meet more people who are specialized in big data or interested in it. From time to time, I also invite bigwigs in the industry to share their experiences with us. I think these are very meaningful things, both to make more people like programming, and to spur myself to work harder!"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "pyEcharts-着色地图",
+    "section": "",
+    "text": "【数据可视化】pyEcharts-着色地图"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "陈俊杰",
+    "section": "",
+    "text": "::: {.column-page}"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Jack Chen",
+    "section": "",
+    "text": "For循环 解决Tushare调用问题，实战演示！\n\n\n\n\n\n\n\nSQL\n\n\n数据库\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nOct 17, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nSQL 分组查询 & Python 可视化\n\n\n\n\n\n\n\nSQL\n\n\n数据库\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n免费金融数据平台——TUSHARE\n\n\n\n\n\n\n\n数据集\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nPython连接Postgres数据库详解\n\n\n\n\n\n\n\n数据库\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n五款数据库连接工具&快速上手pgAdmin\n\n\n\n\n\n\n\n数据库\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n云计算服务是什么？带你了解四家云服务厂商！\n\n\n\n\n\n\n\n阿里云服务器\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n云计算服务是什么？带你了解四家云服务厂商！\n\n\n\n\n\n\n\n阿里云服务器\n\n\n\n\n\n\n\n\n\n\n\nAug 28, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n云计算服务是什么？带你了解四家云服务厂商！\n\n\n\n\n\n\n\n阿里云服务器\n\n\n\n\n\n\n\n\n\n\n\nAug 22, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n想同时拥有两个系统吗？那就快来试试WSL2吧！！！\n\n\n\n\n\n\n\nWSL2\n\n\n\n\n\n\n\n\n\n\n\nAug 14, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n快速了解Docker容器技术，成为云计算的‘弄潮儿’！\n\n\n\n\n\n\n\nDocker\n\n\n\n\n\n\n\n\n\n\n\nAug 7, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nPostgreSQL-Windows安装过程&解决报错\n\n\n\n\n\n\n\n数据库\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n对比四款主流关系型数据库\n\n\n\n\n\n\n\n数据库\n\n\n\n\n\n\n\n\n\n\n\nJul 24, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】高校数据交互大屏_完整可视化流程\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nJul 16, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】数据大屏-简易版\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】钻取地图\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nJul 1, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】气泡地图\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nJun 24, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】气泡地图\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nJun 17, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】五分钟教你制作入门地图\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nJun 11, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n万万没想到之我一个文科生成为了技术流up主\n\n\n\n\n\n\n\n个人介绍\n\n\n\n\n\n\n\n\n\n\n\nMay 31, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【Tableau】官网介绍&下载安装\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\n\nMay 27, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n【BI可视化】国内外4款BI工具优缺点对比\n\n\n\n\n\n\n\nBI可视化\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\npyEcharts-数据大屏\n\n\n\n\n\n\n\npyEcharts\n\n\n\n\n\n\n\n\n\n\n\nMay 21, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\npyEcharts-着色地图\n\n\n\n\n\n\n\npyEcharts\n\n\n\n\n\n\n\n\n\n\n\nMay 17, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\npyEcharts-动态条形图\n\n\n\n\n\n\n\npyEcharts\n\n\n\n\n\n\n\n\n\n\n\nMay 15, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\npyEcharts-柱状图&折线图\n\n\n\n\n\n\n\npyEcharts\n\n\n\n\n\n\n\n\n\n\n\nMay 11, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\npyEcharts-旭日图&树状图\n\n\n\n\n\n\n\npyEcharts\n\n\n\n\n\n\n\n\n\n\n\nMay 6, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nPandas 数据导入/导出\n\n\n\n\n\n\n\npython\n\n\npandas\n\n\n\n\n\n\n\n\n\n\n\nApr 15, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nPandas 基础用法 5分钟了解！！！\n\n\n\n\n\n\n\npython\n\n\npandas\n\n\n\n\n\n\n\n\n\n\n\nApr 13, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nPandas 数据结构 简单介绍\n\n\n\n\n\n\n\npython\n\n\npandas\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nAnaconda 超详细安装\n\n\n\n\n\n\n\nAnaconda\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\nPandas 数据结构 简单介绍\n\n\n\n\n\n\n\npython\n\n\npandas\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n美国疫情日增80万？三个数据网站带你迅速了解！\n\n\n\n\n\n\n\n数据集\n\n\ncovid\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2022\n\n\nJack Chen\n\n\n\n\n\n\n  \n\n\n\n\n「疫情回落」 —— “我们能否摆脱循环？”\n\n\n\n\n\n\n\n数据集\n\n\ncovid\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2022\n\n\nJack Chen\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html#bio",
+    "href": "about.html#bio",
+    "title": "陈俊杰",
+    "section": "Bio",
+    "text": "Bio\nI’m a PhD candidate at SUNY-ESF, working on predictive modeling and visualization with a focus on natural systems. My current work focuses on using game engines as GIS to visualize large-scale landscapes with a focus on forested systems as a method for scientific communication and outreach. Past projects have focused on landscape and community ecology, and have included predictive models of forest biomass from remote sensing data and the landscape-level impacts of beaver within New York’s Adirondack State Park. In all of these projects I’ve worked to apply data science techniques to large-scale challenges, frequently serving as the statistical and technical expert within my team."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "陈俊杰",
+    "section": "Education",
+    "text": "Education\nState University of New York College of Environmental Science and Forestry\nSyracuse, NY\nPh.D. in Environmental Science | August 2020 - Present (Expected 2024)\nB.S. in Forest Ecosystem Science | August 2015 - December 2018"
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "陈俊杰",
+    "section": "Bio",
+    "text": "Bio\nI’m a PhD candidate at SUNY-ESF, working on predictive modeling and visualization with a focus on natural systems. My current work focuses on using game engines as GIS to visualize large-scale landscapes with a focus on forested systems as a method for scientific communication and outreach. Past projects have focused on landscape and community ecology, and have included predictive models of forest biomass from remote sensing data and the landscape-level impacts of beaver within New York’s Adirondack State Park. In all of these projects I’ve worked to apply data science techniques to large-scale challenges, frequently serving as the statistical and technical expert within my team."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "陈俊杰",
+    "section": "Education",
+    "text": "Education\nState University of New York College of Environmental Science and Forestry\nSyracuse, NY\nPh.D. in Environmental Science | August 2020 - Present (Expected 2024)\nB.S. in Forest Ecosystem Science | August 2015 - December 2018"
+  }
+]
