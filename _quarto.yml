@@ -6,9 +6,9 @@ website:
   title: "Jack Chen"
   navbar:
     right:
-      - text: "Blog"
+      - text: "Vlog"
         href: blog.html   
-      - text: "GitHub"
+      - text: "github"
         href: https://github.com/jackkkchen
       - text: Bilibili
         href: https://space.bilibili.com/22770928?spm_id_from=333.33.b_73656375726974794f75744c696e6b.1
