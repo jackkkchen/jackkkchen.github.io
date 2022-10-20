@@ -6,15 +6,15 @@ website:
   title: "Jack Chen"
   navbar:
     right:
-      - text: "Vlog"
+      - text: "Blog"
         href: blog.html   
-      - text: "github"
+      - text: "GitHub"
         href: https://github.com/jackkkchen
       - text: Bilibili
         href: https://space.bilibili.com/22770928?spm_id_from=333.33.b_73656375726974794f75744c696e6b.1
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
 
 execute:
