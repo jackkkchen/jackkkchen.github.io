@@ -1,1 +1,1 @@
-Sitemap: https://jackkkchen.github.io/quarto/sitemap.xml
+Sitemap: https://github.com/jackkkchen/quarto/sitemap.xml
