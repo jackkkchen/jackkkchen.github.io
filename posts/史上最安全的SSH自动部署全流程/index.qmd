@@ -1,0 +1,58 @@
+---
+title: "史上最安全的SSH自动部署 全流程"
+author: "Jack Chen"
+date: "2022-11-07"
+categories: [SSH]
+image: "01.png"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=817265087&bvid=BV1oG4y1b7tg&cid=883737428&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
+
+## 视频介绍
+上期视频我们聊到了如何自动化部署静态网站，用的是GitHub Pages和Actions，可以在本地修改文章然后自动部署到网站。今天介绍另一种适用更加广泛的方法，就是自动化部署到自己的服务器，同时使用SSH，提高安全性。我会拿部署Nginx作为一个案例分享，但其实有了服务器之后，也可以用这个方法部署app应用，能做的事情就太多了。
+
+### 以Nginx为案例
+1. 本地使用docker 创建nginx作为案例
+2. localhost 打开网页
+3. 创建新的GitHub项目，并同步至本地nginx
+
+### 创建GitHub仓库
+创建一个GitHub仓库，并与本地关联起来，存储我们的代码文件。将git指令复制到github文件夹后，
+左下角显示main就代表连接成功了。
+
+### GitHub Actions 自动提交代码
+创建```.github/workflows/ssh.yml```文件
+其中内容为：
+
+1. name相当于起了一个名字，这个名字可以在部署的时候看的到；只要能看出部署到了哪一步就可以。on表示触发条件，这里是push的时候会触发，也就是我们推送代码的时候触发这个workflow。
+
+2. 我们再往下看，jobs表示执行的任务，一个workflow可以有多个任务。
+
+3. 再下面runs-on表示运行环境，这里用的是最新的ubuntu系统。steps是任务中具体的步骤，里面的每一个-代表了一个action，其中action也可以有自己的name，也可以使用uses，使用别人写好的action。这里用的就是appleboy的一个ssh-action。
+
+4. 接下来的```secrets.HOST，username， key```这些，就是我们跟GitHub关联的，服务器IP地址，服务器名称，密钥。这里等下服务器连接GitHub的时候会用到。
+
+5. 另外一个很重要的就是我们实际上需要什么动作，就是在script下面进行添加的。比如我这里cd到这个文件夹中，然后git pull。意思连接服务器后，去到服务器下的这个文件夹，然后自动同步我上传到GitHub的内容。
+
+
+### 使用ssh设置的密钥
+先创建一个.ssh文件夹，所有密钥都需要放在这里。然后使用```ssh-keygen```命令，其中-t是指定选用ed25519类型，不然默认就是rsa。-C 则是提供一个注释，我这边加的是GitHub账户的邮箱。
+然后一直回车就行，分别是让你更改文件名和添加一个“解锁口令”，我们可以先不用管。
+
+一共是有两个密钥，一个是私钥，放在服务器上，需要自己藏起来不会泄漏出去的；另一个.pub的是公钥，可以放在GitHub上是可以任意的对外发布的
+
+为了GitHub弄明白密钥在哪，我们还需要把公钥，也就是.pub的这个，放到一个叫authorized_keys的文件夹中进行认证，没有的话创建一个。
+
+### GitHub 配置 ssh
+1. 在设置中的 deploy key 添加```id_ed25519.pub``` 公钥；
+
+2. 在下面的secrets中添加之前在yml文件中定义的三个，host, username, key。这里特别注意的是，KEY 添加的是```id_ed25519``` 这个私钥。
+
+这样服务器和GitHub都有了对应的密钥，使用```git clone ssh```链接克隆下来之后，我们的自动化部署动作还没结束，来到yml文件中，需要确认是cd到自己服务器中的这个文件夹。如果大家连接出现问题的话，可以留意下```.ssh/```中有没有```known_hosts```，或者尝试重新```git pull```
+

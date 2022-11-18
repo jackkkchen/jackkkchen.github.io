@@ -1,0 +1,16 @@
+---
+title: "自动化部署网站--Quarto"
+author: "Jack Chen"
+date: "2022-10-31"
+categories: [Quarto]
+image: "01.png"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=987086736&bvid=BV1ft4y1T7DN&cid=876848395&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
+

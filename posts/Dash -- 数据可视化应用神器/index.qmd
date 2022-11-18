@@ -1,0 +1,15 @@
+---
+title: "Dash -- 数据可视化应用神器"
+author: "Jack Chen"
+date: "2022-11-14"
+categories: [Dash]
+image: "01.png"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=902593833&bvid=BV1hP4y1y7Q5&cid=890853049&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
