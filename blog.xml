@@ -6,15 +6,184 @@
       version="2.0">
 <channel>
 <title>Jack Chen</title>
-<link>jackkkchen.com/blog.html</link>
-<atom:link href="jackkkchen.com/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://jackkkchen.com/blog.html</link>
+<atom:link href="https://jackkkchen.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.1.251</generator>
-<lastBuildDate>Mon, 17 Oct 2022 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Mon, 14 Nov 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dash – 数据可视化应用神器</title>
+  <dc:creator>Jack Chen</dc:creator>
+  <link>https://jackkkchen.com/posts/Dash -- 数据可视化应用神器/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=902593833&amp;bvid=BV1hP4y1y7Q5&amp;cid=890853049&amp;page=1" frameborder="no" scrolling="no">
+</iframe>
+</div>
+
+
+
+ ]]></description>
+  <category>Dash</category>
+  <guid>https://jackkkchen.com/posts/Dash -- 数据可视化应用神器/index.html</guid>
+  <pubDate>Mon, 14 Nov 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://jackkkchen.com/posts/Dash -- 数据可视化应用神器/01.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>史上最安全的SSH自动部署 全流程</title>
+  <dc:creator>Jack Chen</dc:creator>
+  <link>https://jackkkchen.com/posts/史上最安全的SSH自动部署全流程/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=817265087&amp;bvid=BV1oG4y1b7tg&amp;cid=883737428&amp;page=1" frameborder="no" scrolling="no">
+</iframe>
+</div>
+<section id="视频介绍" class="level2">
+<h2 class="anchored" data-anchor-id="视频介绍">视频介绍</h2>
+<p>上期视频我们聊到了如何自动化部署静态网站，用的是GitHub Pages和Actions，可以在本地修改文章然后自动部署到网站。今天介绍另一种适用更加广泛的方法，就是自动化部署到自己的服务器，同时使用SSH，提高安全性。我会拿部署Nginx作为一个案例分享，但其实有了服务器之后，也可以用这个方法部署app应用，能做的事情就太多了。</p>
+<section id="以nginx为案例" class="level3">
+<h3 class="anchored" data-anchor-id="以nginx为案例">以Nginx为案例</h3>
+<ol type="1">
+<li>本地使用docker 创建nginx作为案例</li>
+<li>localhost 打开网页</li>
+<li>创建新的GitHub项目，并同步至本地nginx</li>
+</ol>
+</section>
+<section id="创建github仓库" class="level3">
+<h3 class="anchored" data-anchor-id="创建github仓库">创建GitHub仓库</h3>
+<p>创建一个GitHub仓库，并与本地关联起来，存储我们的代码文件。将git指令复制到github文件夹后， 左下角显示main就代表连接成功了。</p>
+</section>
+<section id="github-actions-自动提交代码" class="level3">
+<h3 class="anchored" data-anchor-id="github-actions-自动提交代码">GitHub Actions 自动提交代码</h3>
+<p>创建<code>.github/workflows/ssh.yml</code>文件 其中内容为：</p>
+<ol type="1">
+<li><p>name相当于起了一个名字，这个名字可以在部署的时候看的到；只要能看出部署到了哪一步就可以。on表示触发条件，这里是push的时候会触发，也就是我们推送代码的时候触发这个workflow。</p></li>
+<li><p>我们再往下看，jobs表示执行的任务，一个workflow可以有多个任务。</p></li>
+<li><p>再下面runs-on表示运行环境，这里用的是最新的ubuntu系统。steps是任务中具体的步骤，里面的每一个-代表了一个action，其中action也可以有自己的name，也可以使用uses，使用别人写好的action。这里用的就是appleboy的一个ssh-action。</p></li>
+<li><p>接下来的<code>secrets.HOST，username， key</code>这些，就是我们跟GitHub关联的，服务器IP地址，服务器名称，密钥。这里等下服务器连接GitHub的时候会用到。</p></li>
+<li><p>另外一个很重要的就是我们实际上需要什么动作，就是在script下面进行添加的。比如我这里cd到这个文件夹中，然后git pull。意思连接服务器后，去到服务器下的这个文件夹，然后自动同步我上传到GitHub的内容。</p></li>
+</ol>
+</section>
+<section id="使用ssh设置的密钥" class="level3">
+<h3 class="anchored" data-anchor-id="使用ssh设置的密钥">使用ssh设置的密钥</h3>
+<p>先创建一个.ssh文件夹，所有密钥都需要放在这里。然后使用<code>ssh-keygen</code>命令，其中-t是指定选用ed25519类型，不然默认就是rsa。-C 则是提供一个注释，我这边加的是GitHub账户的邮箱。 然后一直回车就行，分别是让你更改文件名和添加一个“解锁口令”，我们可以先不用管。</p>
+<p>一共是有两个密钥，一个是私钥，放在服务器上，需要自己藏起来不会泄漏出去的；另一个.pub的是公钥，可以放在GitHub上是可以任意的对外发布的</p>
+<p>为了GitHub弄明白密钥在哪，我们还需要把公钥，也就是.pub的这个，放到一个叫authorized_keys的文件夹中进行认证，没有的话创建一个。</p>
+</section>
+<section id="github-配置-ssh" class="level3">
+<h3 class="anchored" data-anchor-id="github-配置-ssh">GitHub 配置 ssh</h3>
+<ol type="1">
+<li><p>在设置中的 deploy key 添加<code>id_ed25519.pub</code> 公钥；</p></li>
+<li><p>在下面的secrets中添加之前在yml文件中定义的三个，host, username, key。这里特别注意的是，KEY 添加的是<code>id_ed25519</code> 这个私钥。</p></li>
+</ol>
+<p>这样服务器和GitHub都有了对应的密钥，使用<code>git clone ssh</code>链接克隆下来之后，我们的自动化部署动作还没结束，来到yml文件中，需要确认是cd到自己服务器中的这个文件夹。如果大家连接出现问题的话，可以留意下<code>.ssh/</code>中有没有<code>known_hosts</code>，或者尝试重新<code>git pull</code></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>SSH</category>
+  <guid>https://jackkkchen.com/posts/史上最安全的SSH自动部署全流程/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://jackkkchen.com/posts/史上最安全的SSH自动部署全流程/01.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>自动化部署网站–Quarto</title>
+  <dc:creator>Jack Chen</dc:creator>
+  <link>https://jackkkchen.com/posts/自动化部署网站--Quarto/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=987086736&amp;bvid=BV1ft4y1T7DN&amp;cid=876848395&amp;page=1" frameborder="no" scrolling="no">
+</iframe>
+</div>
+
+
+
+ ]]></description>
+  <category>Quarto</category>
+  <guid>https://jackkkchen.com/posts/自动化部署网站--Quarto/index.html</guid>
+  <pubDate>Mon, 31 Oct 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://jackkkchen.com/posts/自动化部署网站--Quarto/01.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>程序员的写作新福音–Quarto</title>
+  <dc:creator>Jack Chen</dc:creator>
+  <link>https://jackkkchen.com/posts/程序员的写作新福音--Quarto/超详细创建阿里云服务器/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=474253263&amp;bvid=BV1RK411S7jY&amp;cid=870219872&amp;page=1" frameborder="no" scrolling="no">
+</iframe>
+</div>
+<section id="视频介绍" class="level2">
+<h2 class="anchored" data-anchor-id="视频介绍">视频介绍</h2>
+<p>哈喽哈喽，大家好，我是Jack。因为最近在准备研究生的申请，所以想做一个个人网站充当个人门面。稍微了解了下，发现了一个很新的东西（今年七月发布的），也比较适合我。今天就给大家介绍这个 – Quarto 四开门</p>
+<section id="网站的静态-动态区别说明" class="level3">
+<h3 class="anchored" data-anchor-id="网站的静态-动态区别说明">网站的静态 动态区别说明</h3>
+<p>我们知道，网页是分动态和静态的。最简单的区别就是可以有数据库支持的为“动态”，一般像电商、商城，或是一些大企业的网站。 主流的动态网页工具像WordPress，搭建在一个服务器上，会有更加好的交互性。</p>
+<p>另一方面，早期的网站通常都是由静态页面制作的。静态网页的每个网页都有一个固定的URL，所以内容相对稳定，也更容易被搜索引擎检索；</p>
+<p>但静态网站的致命弱点就是不易维护，为了不断更新网页内容，你必须不断地重复制作HTML文档，随着网站内容和信息量的日益扩增，这个工作量就会大得出乎想像。 当然，这个问题我们可以用GitHub Actions 自动部署来搞定。</p>
+<p>那制作静态网页大家一般是用，Hugo、Jekyll、Hexo</p>
+<p>更进一步的集大成者就是大名鼎鼎的Blogdown以及我们的闪耀新星 Quarto。</p>
+<p>Blogdown 就是将 Rmarkdown 与 hugo 相结合，大概流程就是用rmd写博客，用hugo 切换主题，再用 github pages 或者 netgify 部署网站。Rmarkdown的特别之处，就是能够在网页运行代码，而不是简单的复制粘贴。诶 这就很适合我来做分享啊。可以在博客里放上视频，再po点代码做介绍</p>
+</section>
+<section id="quarto-背景介绍" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-背景介绍">quarto 背景介绍</h3>
+<p>那回到我们的主角Quarto，已经开发了Blogdown的Rstudio，为什么又要搞出个Quarto呢？事实上，R Markdown已经存在了10年，虽然RStudio实际可以支持Python啥的，但还是会被认为是R的IDE。jupyter notebook 也一样，现在也支持R，但也被认为是个 Python 的工作平台。这就像是一个刻在DNA里的标签，是消除不掉的。</p>
+<p>而这也是RStudio开发Quarto的原因，虽然quarto是类似于R Markdown的一个发布系统，但不同的是，它不是一个特定的语言库，而是一个外部软件应用。</p>
+<p>最重要的是，Quarto 对于 Python，R，Julia 和 Observable 的支持都非常好。在quarto的官网中可以看到除了RStudio之外，还支持其他主流编辑器。 甚至由于python的流行程度，还把Vscode放在Rstudio的前面。</p>
+<p>Quarto 的初衷是去掉 R Markdown 对 R 的依赖，比如 Python 用户可以用 Jupyter 内核去跑 Python 代码，而不需要绕道先安装 R，用 R 调用 Python。</p>
+</section>
+<section id="quarto-是什么" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-是什么">quarto 是什么？</h3>
+<p>Quarto 的字面意思是四开本，取其印刷意。它主要基于 TypeScript 开发。</p>
+<p>基本上囊括了所有 R Markdown 的功能（报告、幻灯片、网站、论文、书籍等），同时因为涉及代码，所以用户会多为经常编码的科研用户。但又不会只针对某一语言的用户，因为Quarto可以通过qmd文档的yaml，来自由选择文档代码的语言来编译文档（我全要）</p>
+</section>
+<section id="优缺点" class="level3">
+<h3 class="anchored" data-anchor-id="优缺点">优缺点</h3>
+<p>而这也是quarto的一大优点。除了对多语言和编辑方式的支持外，quarto也支持多种类型的输出，基本所有Pandoc的支持类型都行。并且在页面的功能上，Quarto 做了很多有助于技术写作的工作</p>
+<p>缺点可能就是知名度还差点意思，毕竟今年七月份才发布的；除此之外，追求朴实无华的quarto在制作网站的专业度这块，可能比不过Hugo，不管是在编译速度还是网站的主题样式，虽然如此，但博客太花里胡哨好像也不大好，这点就见仁见智了。对我这个需求简单的建站小白来说，只需要专注写作本身，其他一切交给Quarto～</p>
+</section>
+<section id="创建quarto-blog" class="level3">
+<h3 class="anchored" data-anchor-id="创建quarto-blog">创建Quarto Blog</h3>
+<p>接下来，我们就来看看如何创建一个简单的Quarto blog。</p>
+<ol type="1">
+<li><p>在Vscode拓展中，安装quarto拓展；</p></li>
+<li><p><code>ctl+shift+P</code>打开命令面板，执行<code>quarto create project</code>，选择<code>Blog Project</code>;</p></li>
+<li><p>打开<code>index.qmd</code>文件，右上角render进行渲染，快捷键为 <code>ctl+shift+K</code>；</p></li>
+<li><p>之后即可在<code>post</code>中撰写博客或代码</p></li>
+</ol>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Quarto</category>
+  <guid>https://jackkkchen.com/posts/程序员的写作新福音--Quarto/超详细创建阿里云服务器/index.html</guid>
+  <pubDate>Mon, 24 Oct 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://jackkkchen.com/posts/程序员的写作新福音--Quarto/超详细创建阿里云服务器/01.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
 <item>
   <title>For循环 解决Tushare调用问题，实战演示！</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/For循环解决Tushare调用问题，实战演示！/index.html</link>
+  <link>https://jackkkchen.com/posts/For循环解决Tushare调用问题，实战演示！/index.html</link>
   <description><![CDATA[ 
 
 
@@ -31,14 +200,14 @@
   <category>SQL</category>
   <category>数据库</category>
   <category>Python</category>
-  <guid>jackkkchen.com/posts/For循环解决Tushare调用问题，实战演示！/index.html</guid>
+  <guid>https://jackkkchen.com/posts/For循环解决Tushare调用问题，实战演示！/index.html</guid>
   <pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/For循环解决Tushare调用问题，实战演示！/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/For循环解决Tushare调用问题，实战演示！/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>SQL 分组查询 & Python 可视化</title>
+  <title>SQL 分组查询 &amp; Python 可视化</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/SQL分组查询_Python可视化/index.html</link>
+  <link>https://jackkkchen.com/posts/SQL分组查询_Python可视化/index.html</link>
   <description><![CDATA[ 
 
 
@@ -55,14 +224,14 @@
   <category>SQL</category>
   <category>数据库</category>
   <category>Python</category>
-  <guid>jackkkchen.com/posts/SQL分组查询_Python可视化/index.html</guid>
+  <guid>https://jackkkchen.com/posts/SQL分组查询_Python可视化/index.html</guid>
   <pubDate>Mon, 03 Oct 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/SQL分组查询_Python可视化/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/SQL分组查询_Python可视化/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>免费金融数据平台——TUSHARE</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/免费金融数据平台TUSHARE/index.html</link>
+  <link>https://jackkkchen.com/posts/免费金融数据平台TUSHARE/index.html</link>
   <description><![CDATA[ 
 
 
@@ -78,14 +247,14 @@
  ]]></description>
   <category>数据集</category>
   <category>Python</category>
-  <guid>jackkkchen.com/posts/免费金融数据平台TUSHARE/index.html</guid>
+  <guid>https://jackkkchen.com/posts/免费金融数据平台TUSHARE/index.html</guid>
   <pubDate>Sun, 25 Sep 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/免费金融数据平台TUSHARE/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/免费金融数据平台TUSHARE/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Python连接Postgres数据库详解</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/Python连接Postgres数据库详解/index.html</link>
+  <link>https://jackkkchen.com/posts/Python连接Postgres数据库详解/index.html</link>
   <description><![CDATA[ 
 
 
@@ -101,14 +270,14 @@
  ]]></description>
   <category>数据库</category>
   <category>Python</category>
-  <guid>jackkkchen.com/posts/Python连接Postgres数据库详解/index.html</guid>
+  <guid>https://jackkkchen.com/posts/Python连接Postgres数据库详解/index.html</guid>
   <pubDate>Mon, 19 Sep 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/Python连接Postgres数据库详解/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/Python连接Postgres数据库详解/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>五款数据库连接工具&快速上手pgAdmin</title>
+  <title>五款数据库连接工具&amp;快速上手pgAdmin</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/五款数据库连接工具_快速上手pgAdmin/index.html</link>
+  <link>https://jackkkchen.com/posts/五款数据库连接工具_快速上手pgAdmin/index.html</link>
   <description><![CDATA[ 
 
 
@@ -123,14 +292,14 @@
 
  ]]></description>
   <category>数据库</category>
-  <guid>jackkkchen.com/posts/五款数据库连接工具_快速上手pgAdmin/index.html</guid>
+  <guid>https://jackkkchen.com/posts/五款数据库连接工具_快速上手pgAdmin/index.html</guid>
   <pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/五款数据库连接工具_快速上手pgAdmin/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/五款数据库连接工具_快速上手pgAdmin/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>云计算服务是什么？带你了解四家云服务厂商！</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/Vscode远程连接阿里云服务器/index.html</link>
+  <link>https://jackkkchen.com/posts/Vscode远程连接阿里云服务器/index.html</link>
   <description><![CDATA[ 
 
 
@@ -145,14 +314,14 @@
 
  ]]></description>
   <category>阿里云服务器</category>
-  <guid>jackkkchen.com/posts/Vscode远程连接阿里云服务器/index.html</guid>
+  <guid>https://jackkkchen.com/posts/Vscode远程连接阿里云服务器/index.html</guid>
   <pubDate>Mon, 05 Sep 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/Vscode远程连接阿里云服务器/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/Vscode远程连接阿里云服务器/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>云计算服务是什么？带你了解四家云服务厂商！</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/超详细创建阿里云服务器/index.html</link>
+  <link>https://jackkkchen.com/posts/超详细创建阿里云服务器/index.html</link>
   <description><![CDATA[ 
 
 
@@ -167,14 +336,14 @@
 
  ]]></description>
   <category>阿里云服务器</category>
-  <guid>jackkkchen.com/posts/超详细创建阿里云服务器/index.html</guid>
+  <guid>https://jackkkchen.com/posts/超详细创建阿里云服务器/index.html</guid>
   <pubDate>Sun, 28 Aug 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/超详细创建阿里云服务器/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/超详细创建阿里云服务器/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>云计算服务是什么？带你了解四家云服务厂商！</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/云计算服务是什么？带你了解四家云服务厂商！/index.html</link>
+  <link>https://jackkkchen.com/posts/云计算服务是什么？带你了解四家云服务厂商！/index.html</link>
   <description><![CDATA[ 
 
 
@@ -189,14 +358,14 @@
 
  ]]></description>
   <category>阿里云服务器</category>
-  <guid>jackkkchen.com/posts/云计算服务是什么？带你了解四家云服务厂商！/index.html</guid>
+  <guid>https://jackkkchen.com/posts/云计算服务是什么？带你了解四家云服务厂商！/index.html</guid>
   <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/云计算服务是什么？带你了解四家云服务厂商！/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/云计算服务是什么？带你了解四家云服务厂商！/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>想同时拥有两个系统吗？那就快来试试WSL2吧！！！</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/想同时拥有两个系统吗？那就快来试试WSL2吧！！！/index.html</link>
+  <link>https://jackkkchen.com/posts/想同时拥有两个系统吗？那就快来试试WSL2吧！！！/index.html</link>
   <description><![CDATA[ 
 
 
@@ -211,14 +380,14 @@
 
  ]]></description>
   <category>WSL2</category>
-  <guid>jackkkchen.com/posts/想同时拥有两个系统吗？那就快来试试WSL2吧！！！/index.html</guid>
+  <guid>https://jackkkchen.com/posts/想同时拥有两个系统吗？那就快来试试WSL2吧！！！/index.html</guid>
   <pubDate>Sun, 14 Aug 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/想同时拥有两个系统吗？那就快来试试WSL2吧！！！/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/想同时拥有两个系统吗？那就快来试试WSL2吧！！！/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>快速了解Docker容器技术，成为云计算的‘弄潮儿’！</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/快速了解Docker容器技术，成为云计算的‘弄潮儿’！/index.html</link>
+  <link>https://jackkkchen.com/posts/快速了解Docker容器技术，成为云计算的‘弄潮儿’！/index.html</link>
   <description><![CDATA[ 
 
 
@@ -233,14 +402,14 @@
 
  ]]></description>
   <category>Docker</category>
-  <guid>jackkkchen.com/posts/快速了解Docker容器技术，成为云计算的‘弄潮儿’！/index.html</guid>
+  <guid>https://jackkkchen.com/posts/快速了解Docker容器技术，成为云计算的‘弄潮儿’！/index.html</guid>
   <pubDate>Sun, 07 Aug 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/快速了解Docker容器技术，成为云计算的‘弄潮儿’！/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/快速了解Docker容器技术，成为云计算的‘弄潮儿’！/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>PostgreSQL-Windows安装过程&解决报错</title>
+  <title>PostgreSQL-Windows安装过程&amp;解决报错</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/PostgreSQL_Windows安装过程解决报错/index.html</link>
+  <link>https://jackkkchen.com/posts/PostgreSQL_Windows安装过程解决报错/index.html</link>
   <description><![CDATA[ 
 
 
@@ -255,14 +424,14 @@
 
  ]]></description>
   <category>数据库</category>
-  <guid>jackkkchen.com/posts/PostgreSQL_Windows安装过程解决报错/index.html</guid>
+  <guid>https://jackkkchen.com/posts/PostgreSQL_Windows安装过程解决报错/index.html</guid>
   <pubDate>Fri, 29 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/PostgreSQL_Windows安装过程解决报错/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/PostgreSQL_Windows安装过程解决报错/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>对比四款主流关系型数据库</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/对比四款主流关系型数据库/index.html</link>
+  <link>https://jackkkchen.com/posts/对比四款主流关系型数据库/index.html</link>
   <description><![CDATA[ 
 
 
@@ -277,14 +446,14 @@
 
  ]]></description>
   <category>数据库</category>
-  <guid>jackkkchen.com/posts/对比四款主流关系型数据库/index.html</guid>
+  <guid>https://jackkkchen.com/posts/对比四款主流关系型数据库/index.html</guid>
   <pubDate>Sun, 24 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/对比四款主流关系型数据库/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/对比四款主流关系型数据库/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>【Tableau】高校数据交互大屏_完整可视化流程</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】高校数据交互大屏_完整可视化流程/index.html</link>
+  <link>https://jackkkchen.com/posts/【Tableau】高校数据交互大屏_完整可视化流程/index.html</link>
   <description><![CDATA[ 
 
 
@@ -299,14 +468,14 @@
 
  ]]></description>
   <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】高校数据交互大屏_完整可视化流程/index.html</guid>
+  <guid>https://jackkkchen.com/posts/【Tableau】高校数据交互大屏_完整可视化流程/index.html</guid>
   <pubDate>Sat, 16 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】高校数据交互大屏_完整可视化流程/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/【Tableau】高校数据交互大屏_完整可视化流程/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>【Tableau】数据大屏-简易版</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】数据大屏-简易版/index.html</link>
+  <link>https://jackkkchen.com/posts/【Tableau】数据大屏-简易版/index.html</link>
   <description><![CDATA[ 
 
 
@@ -321,14 +490,14 @@
 
  ]]></description>
   <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】数据大屏-简易版/index.html</guid>
+  <guid>https://jackkkchen.com/posts/【Tableau】数据大屏-简易版/index.html</guid>
   <pubDate>Fri, 08 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】数据大屏-简易版/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/【Tableau】数据大屏-简易版/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>【Tableau】钻取地图</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】钻取地图/index.html</link>
+  <link>https://jackkkchen.com/posts/【Tableau】钻取地图/index.html</link>
   <description><![CDATA[ 
 
 
@@ -343,14 +512,14 @@
 
  ]]></description>
   <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】钻取地图/index.html</guid>
+  <guid>https://jackkkchen.com/posts/【Tableau】钻取地图/index.html</guid>
   <pubDate>Fri, 01 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】钻取地图/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/【Tableau】钻取地图/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>【Tableau】气泡地图</title>
   <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】自定义地图领地/index.html</link>
+  <link>https://jackkkchen.com/posts/【Tableau】自定义地图领地/index.html</link>
   <description><![CDATA[ 
 
 
@@ -365,97 +534,9 @@
 
  ]]></description>
   <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】自定义地图领地/index.html</guid>
+  <guid>https://jackkkchen.com/posts/【Tableau】自定义地图领地/index.html</guid>
   <pubDate>Fri, 24 Jun 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】自定义地图领地/01.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>【Tableau】气泡地图</title>
-  <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】气泡地图/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div style="position: relative; padding: 30% 45%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1cF411c7mv&amp;page=1" frameborder="no" scrolling="no">
-</iframe>
-</div>
-
-
-
- ]]></description>
-  <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】气泡地图/index.html</guid>
-  <pubDate>Fri, 17 Jun 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】气泡地图/01.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>【Tableau】五分钟教你制作入门地图</title>
-  <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】五分钟教你制作入门地图/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div style="position: relative; padding: 30% 45%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1jZ4y1q73t&amp;page=1" frameborder="no" scrolling="no">
-</iframe>
-</div>
-
-
-
- ]]></description>
-  <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】五分钟教你制作入门地图/index.html</guid>
-  <pubDate>Sat, 11 Jun 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】五分钟教你制作入门地图/01.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>万万没想到之我一个文科生成为了技术流up主</title>
-  <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/万万没想到之我一个文科生成为了技术流up主/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div style="position: relative; padding: 30% 45%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1694y1S7XP&amp;page=1" frameborder="no" scrolling="no">
-</iframe>
-</div>
-
-
-
- ]]></description>
-  <category>个人介绍</category>
-  <guid>jackkkchen.com/posts/万万没想到之我一个文科生成为了技术流up主/index.html</guid>
-  <pubDate>Tue, 31 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/万万没想到之我一个文科生成为了技术流up主/01.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>【Tableau】官网介绍&下载安装</title>
-  <dc:creator>Jack Chen</dc:creator>
-  <link>jackkkchen.com/posts/【Tableau】官网介绍_下载安装/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div style="position: relative; padding: 30% 45%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1jZ4y1q73t&amp;page=1" frameborder="no" scrolling="no">
-</iframe>
-</div>
-
-
-
- ]]></description>
-  <category>BI可视化</category>
-  <guid>jackkkchen.com/posts/【Tableau】官网介绍_下载安装/index.html</guid>
-  <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="jackkkchen.com/posts/【Tableau】官网介绍_下载安装/01.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://jackkkchen.com/posts/【Tableau】自定义地图领地/01.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

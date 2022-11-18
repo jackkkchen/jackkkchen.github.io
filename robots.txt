@@ -1,1 +1,1 @@
-Sitemap: jackkkchen.com/sitemap.xml
+Sitemap: https://jackkkchen.com/sitemap.xml

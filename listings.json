@@ -2,6 +2,10 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/Dash -- 数据可视化应用神器/index.html",
+      "/posts/史上最安全的SSH自动部署全流程/index.html",
+      "/posts/自动化部署网站--Quarto/index.html",
+      "/posts/程序员的写作新福音--Quarto/超详细创建阿里云服务器/index.html",
       "/posts/For循环解决Tushare调用问题，实战演示！/index.html",
       "/posts/SQL分组查询_Python可视化/index.html",
       "/posts/免费金融数据平台TUSHARE/index.html",
