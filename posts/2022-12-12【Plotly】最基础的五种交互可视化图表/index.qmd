@@ -1,0 +1,148 @@
+---
+title: "【Plotly】最基础的五种交互可视化图表"
+author: "Jack Chen"
+date: "2022-12-12"
+categories: 
+- plotly
+- 可视化
+image: "01.jpg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1iW4y1M7v7&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
+
+## 视频介绍
+哈喽哈喽大家好，我们今天从plotly.express入手，给大家展示下如何用python来绘制高颜值的交互式可视化图表。
+
+像我们上期视频介绍的一样，Plotly Express 是一个高级 Python 可视化库：它是 Plotly.py 的高级封装。最大的特点就是，它能用非常简单的语法绘制一个复杂的图表，其内置了大量实用且精美的绘图模板，我们只需调用简单的函数，即可快速生成交互图表。
+
+## 安装和导入
+plotly.express 是 plotly python包里面的常规内容，所以最简单的安装方式就是 ```pip install plotly```
+
+使用的时候 直接```import plotly.express as px```，因为他封装的很好，所以基本上我们只需要一个px 就能绘制任意图表。这一点会比pyecharts方便很多。也是我推荐给新手朋友们的理由之一
+
+```{python}
+import plotly.express as px
+import pandas as pd
+```
+
+
+
+今天就先从散点图，折线图、柱状图、饼图和气泡图，这五个最基础的图例开始吧。
+
+## 数据展示
+比较方便的是plotly里面内置了几个数据集，可以方便我们进行尝试，比如这个 Gapminder 数据集，里面包含各个国家或地区的人口和GDP以及年份。
+
+```{python}
+gapminder = px.data.gapminder()
+gapminder
+```
+
+为了方便绘制第一个的散点图，我们先选定，2007年，使用query将数据从表格中提取出来。
+
+```{python}
+gapminder2007 = gapminder.query('year == 2007')
+gapminder2007
+```
+
+## 散点图
+假设我们想要知道各个国家/地区的人均预期寿命和人均GDP 之间的关系，我们就可以通过这么一行代码，绘制基础的散点图，其中px就是plotly.express这个大家肯定知道。那scatter就是散点图，括号里面，我们肯定是要先提供数据才能画图的麻，所以gapminder2007，然后需要x y轴，也就是我们想知道的人均预期寿命和人均GDP。
+短短一行代码就能画图，是不是特别神奇？
+
+```{python}
+px.scatter(gapminder2007, x = 'gdpPercap', y = 'lifeExp')
+```
+
+### 颜色
+如果你想通过大陆区分它们，你可以使用 color 参数为你的点着色，由 px 负责设置默认颜色，设置图例等：
+```{python}
+px.scatter(gapminder2007, x = 'gdpPercap', y = 'lifeExp', color = 'continent')
+```
+这样就能通过不同的颜色来区分不同的大陆，可以看到鼠标悬停和点击都是有不错的交互效果
+
+### 大小(气泡图)
+如果还想查看各个国家的总人口，怎么加好看点呢？我们可以使用size参数，人口越多这个点就越大。所以我们也称之为气泡图，bubble chart
+
+```{python}
+px.scatter(gapminder2007, x = 'gdpPercap', y = 'lifeExp', color = 'continent', size = 'pop', size_max = 60)
+```
+
+### 子图
+也可以通过 facet_col =”continent“ 来轻松划分各大洲，并且我们可以使用 x轴的对数（log_x）以便在我们在图表中看的更加清晰
+
+```{python}
+px.scatter(gapminder2007, x = 'gdpPercap', y = 'lifeExp', color = 'continent', size = 'pop', size_max = 60, facet_col = 'continent', log_x = True)
+```
+
+## animation
+那这些都只是2007年的数据，我想查看从1952到2007的所有时间该怎么做呢？我们可以加入一条时间线，玩点高级的，让这些气泡随着时间变化而变化，让数据“动”起来。
+
+这个组件也很简单，我们先把数据换成完整的数据集，gapminder。
+然后在后面添加 animation_frame =year ，根据时间来变化，然后animation group = country，国家也就是这些气泡。
+然后别忘了还要修改x 轴和 y轴的范围，不然数值可能会过大或着过小
+```{python}
+px.scatter(gapminder, x = 'gdpPercap', y = 'lifeExp', color = 'continent', size = 'pop', size_max = 60, log_x = True, 
+           animation_frame = 'year', animation_group = 'country', range_x = [100, 100000], range_y = [25, 90]
+           )
+```
+运行看看，还是十分丝滑顺畅的。我们把facet去掉，合并起来再看下，嗯不错，比静态图表高级多了。
+
+## 线形图
+第二个是线形图，也是大家见过最多的图表之一，他比较适合连续数据，特别是时间序列。线形图可以帮助我们关注趋势的起伏波动, 就像刚才提到的年份一样，从1952年到2007年到一个时间数据。我们先来尝试画一条线形图，以单个国家 美国为例，将美国从数据集中取出。
+
+```{python}
+gapminderUSA = px.data.gapminder().query("country == 'United States'")
+gapminderUSA
+```
+
+然后，
+```{python}
+px.line(gapminderUSA, x = 'year', y = 'lifeExp', title = 'Life Expectancy in USA')
+```
+同样px调用line package，数据为刚才的USA， x 轴为时间 year， y 轴 为关心的数值 lifeExp， 顺便设置个title。
+
+这样就能看到一个大概的趋势，但是具体的年份还不大清楚，那我们就可以加上 ```markers = True``` 或者 ```symbol="continent"``` 定制这个记号。我们也可以切换线形图的模式，plotly一共有六种模式可选，默认的linear就是折线图，想要丝滑一点的就是splinear
+```{python}
+px.line(gapminderUSA, x = 'year', y = 'lifeExp', title = 'Life Expectancy in USA', symbol = 'continent', line_shape = 'spline')
+```
+
+
+## 柱状图
+然后当我们需要比较每个类别的值，就会用到柱状图，我们在很多报表中都能看到柱状图，像是销售信息，客户分析或是KPI结果。
+
+我们拿大洋洲为例，
+```{python}
+gapminderOceania = px.data.gapminder().query("continent == 'Oceania'")
+gapminderOceania
+```
+
+用px.bar来调用柱状图，比如说像查看大洋洲这两个国家的历年人口增长。
+
+就可以像这样一行代码，x为year ， y 为population 
+```{python}
+px.bar(gapminderOceania, x = 'year', y = 'pop', color = 'country', barmode = 'group')
+```
+
+默认是堆叠柱状图，那我们加个color进行区分。如果我们不想用堆叠的话，可以使用barmode 修改为 group，这样就能分开了。
+
+## 饼图
+最后一个是饼图，通常用于表示样本数据，不同数据占比多少之类的。
+另外饼图最好在变量较少时使用，不然太多数据的话会挤在一起。
+
+所以我们改用tips，新的小费数据集，我们可以使用饼图查看周四周五周六日四天的小费占比情况。
+```{python}
+tips = px.data.tips()
+tips
+```
+
+```px.pie``` 调用饼图，然后加入数据tips，不同于其他图表，饼图是没有x y轴的，它用的是values，总金额，以及names 为 日期。
+```{python}
+px.pie(tips, values = 'total_bill', names = 'day')
+```
+
+那我们今天介绍的这五款基础图表都是能直接用express绘制的，不需要任何其他的包。大家可以用自己的数据多尝试一下，有什么问题欢迎在评论区留言，感谢收看 谢谢大家！

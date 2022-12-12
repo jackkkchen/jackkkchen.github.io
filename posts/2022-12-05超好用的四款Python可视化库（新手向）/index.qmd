@@ -1,0 +1,16 @@
+---
+title: "超好用的四款Python可视化库（新手向）"
+author: "Jack Chen"
+date: "2022-12-05"
+categories: [Dash]
+image: "01.jpg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?bvid=BV1ER4y117LF&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
+

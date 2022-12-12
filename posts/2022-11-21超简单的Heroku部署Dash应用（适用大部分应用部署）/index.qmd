@@ -1,0 +1,17 @@
+---
+title: "超简单的Heroku部署Dash应用（适用大部分应用部署）"
+author: "Jack Chen"
+date: "2022-11-21"
+categories: 
+- Dash
+- 部署应用
+image: "01.jpg"
+---
+
+<div style="position: relative; padding: 30% 45%;">
+
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=860322098&bvid=BV1uG4y1Z78X&cid=897939501&page=1" frameborder="no" scrolling="no">
+
+</iframe>
+
+</div> 
